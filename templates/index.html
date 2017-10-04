@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Login!</h1>
+<form method="POST">
+  Username:
+  <input type="text" name="username">
+  <br>
+  Password:
+  <input type="password" name="password">
+  <br>
+  {% if error == "username" %}
+  <p>Username is incorrect!</p>
+  {% elif error == "password" %}
+  <p>Password is incorrect!</p>
+  {% endif %}
+  <br>
+  <input type="submit">
+</form>
+
+{% endblock %}
