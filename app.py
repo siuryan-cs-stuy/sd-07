@@ -9,7 +9,7 @@ PASSWORD = 'pwd'
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if 'username' in session:
-        return redirect('/welcome')
+        return redirect(url_for('welcome'))
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -29,12 +29,12 @@ def welcome():
     if 'username' in session:
         return render_template('welcome.html', username = session['username'])
     else:
-        return redirect('/')
+        return redirect(url_for('index'))
     
 @app.route('/logout')
 def logout():
     session.pop('username')
-    return redirect('/')
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.debug = True
