@@ -4,6 +4,12 @@
     <title>This is a page</title>
   </head>
   <body>
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <center><strong>{{ message }}</strong></center>
+    <br>
+    {% endfor %}
+    <br><br>
     {% block content %}
     Content
     {% endblock %}
